@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
-
+import Chatbox from './components/ChatBox';
+import Welcome from './components/welcome';
+import RainEffect from './rainEffect';
 function App() {
+  const [showWelcome,setshowWelcome]=useState(false);
+  const [showChatBox,setshowChatBox]=useState(false);
+  useEffect(()=>{
+
+    setTimeout(()=>{
+      setshowWelcome(true);
+    },5000)
+    setTimeout(()=>{
+      setshowChatBox(true);
+      setshowWelcome(false);
+    },13000)
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+      <div className='
+        outline
+        h-[100vh] w-[100vw]
+        flex justify-center items-center
+        m-0
+      '>
+          {<RainEffect chatBox={showChatBox} welcome={showWelcome}/>}
+          {showWelcome && <Welcome message={"Welcome to ChatFree"}/>}
+          {showChatBox&&<Chatbox/> }
+      </div>
+      </>
   );
 }
 
