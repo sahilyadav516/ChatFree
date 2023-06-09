@@ -4,6 +4,7 @@ import Chatbox from './components/ChatBox';
 import Welcome from './components/welcome';
 import RainEffect from './rainEffect';
 import Login from './login';
+import SignUp from './signup';
 function App() {
   const [showWelcome,setshowWelcome]=useState(false);
   const [showChatBox,setshowChatBox]=useState(false);
@@ -29,7 +30,7 @@ function App() {
           {/* {<RainEffect chatBox={showChatBox} welcome={showWelcome}/>} */}
           {/* {showWelcome && <Welcome message={"Welcome to ChatFree"}/>} */}
           {/* {showChatBox&&<Chatbox/> } */}
-          <Login/>
+          <SignUp/>
       </div>
       </>
   );
