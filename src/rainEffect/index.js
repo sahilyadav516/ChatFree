@@ -16,7 +16,7 @@ function RainEffect(props) {
   },[])
 
   return (
-    <div className={`flex absolute ${(props.welcome || props.chatBox)?'blurRain':'blurOut'} `}>
+    <div className={`flex absolute ${(props.welcome || props.chatBox)?'blurRain':''} `}>
         {rainbars}
     </div>
   );

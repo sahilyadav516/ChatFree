@@ -23,7 +23,7 @@
 }
 .blurRain
 {
-  animation:blur 1s forwards;
+  animation:blur 2s forwards;
 }
 .blurOut
 {
@@ -47,7 +47,7 @@
   }
   to
   {
-    filter:blur(4px);
+    filter:blur(2px);
     /* opacity: 50%; */
   }
   
