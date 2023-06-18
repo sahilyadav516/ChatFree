@@ -5,7 +5,7 @@
 .surface{
   animation: surf 1s forwards;
   opacity: 0%;
-  animation-delay: 2.5s;
+  animation-delay: 1s;
 }
 @keyframes surf {
   to{

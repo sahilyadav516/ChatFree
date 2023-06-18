@@ -6,7 +6,6 @@ function RainEffect(props) {
   useEffect(()=>{
   
     let number= Math.ceil(window.outerWidth/40);
-    console.log(window.innerWidth)
     for(let i=0;i<number-1;i++)
     {
       let start=Math.floor(Math.random()*3000);

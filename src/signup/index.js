@@ -1,10 +1,14 @@
 import { useState,useEffect } from "react";
+import axios from 'axios'
+import {useNavigate} from  'react-router-dom'
 export default function SignUp()
 {   
     const [username,setUsername]=useState('');
     const [password,setPassword]=useState('');
     const [confpassword,setConfPassword]=useState('');
     const [passcheck,setPassCheck]=useState(true);
+    const [userCheck,setUserCheck]=useState(true);
+    const navigate=useNavigate();
     let handleSubmit=(e)=>{
         e.preventDefault();
         if(confpassword!==password)
@@ -12,7 +16,21 @@ export default function SignUp()
             setPassCheck(false);
         }
         else{
-            alert("Success");
+            axios.post("http://localhost:80/signup",{"userName":username,"password":password}).then((res)=>{
+                console.log(res);
+                setUserCheck(true);
+                //After this redirect to login page.
+                // Use router to redirect to login page.
+                navigate('/');
+            })
+            .catch(e=>{
+                console.log(e.response.status);
+                if(e.response.status===403)
+                {
+                    setUserCheck(false);
+                }
+                //Already present ask to redirect to login page.
+            })
         }
 
     }
@@ -28,7 +46,7 @@ export default function SignUp()
         <div className="
             h-[350px] w-[350px] flex justify-center items-center
             bg-[#3d3d3d52]
-            backdrop-blur-sm
+            backdrop-blur-sm surface
         ">
             <form onSubmit={handleSubmit}>
                 <label className="text-sm">Username</label><br />
@@ -48,8 +66,11 @@ export default function SignUp()
                 onChange={(e)=>{setConfPassword(e.target.value)}}
                 /><br />
                 {!passcheck && <div className="text-xs text-[#ff0909]">enter same password</div>}
-                <div className="flex justify-center mt-5">
-                    <button type="submit" className="bg-[#27d427] py-1 px-2 text-black">Sign Up</button>
+                {!userCheck && <div className="text-xs text-[#ff0909]">user already exists</div>}
+                <div className="flex justify-center mt-5 font-bold">
+                    {userCheck && <button type="submit" className="bg-[#27d427] py-1 px-2 text-black">Sign Up</button>}
+                    {!userCheck && <button className="bg-[#27d427] py-1 px-2 text-black"
+                        onClick={()=>{navigate('/')}}>Log In</button>}
                 </div>
 
             </form>
