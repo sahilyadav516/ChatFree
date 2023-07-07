@@ -15,6 +15,7 @@ export default function TextContainer(props){
                 <div className="outl">
                 {props.mess}
                 </div>
+                
             </div>
         </>
     )

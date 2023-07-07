@@ -11,7 +11,6 @@ export default function Chatbox(props){
           
         let index=0;
         axios.get("http://localhost:80/allMessage").then((res)=>{
-            console.log(res.data);
             let data=res.data;
             for(let i=0;i<data.length;i++)
             {
