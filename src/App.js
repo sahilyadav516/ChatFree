@@ -6,6 +6,9 @@ import RainEffect from './rainEffect';
 import Login from './login';
 import SignUp from './signup';
 import {Routes, Route} from 'react-router-dom'
+import Chats from './Chats';
+import PrivateChat from './components/privateChat';
+
 function App() {
   const [showWelcome,setshowWelcome]=useState(false);
   const [showLoginBox,setshowLoginBox]=useState(false);
@@ -32,11 +35,13 @@ function App() {
       '>
           {<RainEffect chatBox={showLoginBox} welcome={showWelcome}/>}
           {showWelcome && <Welcome message={"Welcome to ChatFree"}/>}
-          {isLogged && <Chatbox name={userName}/>}
           <Routes>
-            <Route path='/' element={!isLogged && showLoginBox && <Login log={setIsLogged} name={setUsername}/> }/>
+            <Route path='/' element={(!isLogged && showLoginBox && <Login log={setIsLogged} name={setUsername}/>) || (isLogged && <Chats username={userName}/>) }/>
             <Route path='/signup' element={<SignUp/>}/>
+            <Route path="/private/:id" element={isLogged && <PrivateChat from={userName}/>}/>
+            <Route path="/global" element={isLogged && <Chatbox name={userName}/>}/>
           </Routes>
+          {/* <Chats username="mohit"/> */}
       </div>
       </>
   );

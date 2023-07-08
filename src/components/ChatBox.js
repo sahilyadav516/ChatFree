@@ -33,7 +33,7 @@ export default function Chatbox(props){
           flex flex-col justify-center items-center surface
         '>
           <TextContainer mess={messages}/>
-          <CustomInput connec={socket1}/>
+          <CustomInput global={true} connec={socket1}/>
         </div>
     )
 
