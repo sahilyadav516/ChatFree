@@ -58,6 +58,7 @@ export default function Chats(props){
         backdrop-blur-sm
         bg-[#2121218d]
         flex flex-col
+        surface
         ">
             <div className="relative outlin p-2 text-2xl flex justify-center">
                 <div className="font-semibold">
@@ -93,7 +94,7 @@ export default function Chats(props){
 
             {/* Below is the Chat list */}
 
-            <div className="outlin h-full overflow-scroll">
+            <div className="mt-[-3.5px] h-full overflow-scroll">
             {chatlist}
             </div>
 

@@ -18,11 +18,11 @@ function App() {
 
     setTimeout(()=>{
       setshowWelcome(true);
-    },5000)
+    },1000)
     setTimeout(()=>{
       setshowLoginBox(true);
       setshowWelcome(false);
-    },13000)
+    },3500)
   },[])
 
   return (
@@ -34,14 +34,14 @@ function App() {
         m-0
       '>
           {<RainEffect chatBox={showLoginBox} welcome={showWelcome}/>}
-          {showWelcome && <Welcome message={"Welcome to ChatFree"}/>}
+          {!isLogged && showWelcome && <Welcome message={"Welcome to ChatFree"}/>}
           <Routes>
             <Route path='/' element={(!isLogged && showLoginBox && <Login log={setIsLogged} name={setUsername}/>) || (isLogged && <Chats username={userName}/>) }/>
             <Route path='/signup' element={<SignUp/>}/>
             <Route path="/private/:id" element={isLogged && <PrivateChat from={userName}/>}/>
             <Route path="/global" element={isLogged && <Chatbox name={userName}/>}/>
           </Routes>
-          {/* <Chats username="mohit"/> */}
+          {/* <PrivateChat from="mohit"/> */}
       </div>
       </>
   );

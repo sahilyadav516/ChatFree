@@ -18,7 +18,7 @@ export default function Welcome(props){
             clearInterval(incrementCounter);
             else
             counter++;
-        },250)
+        },80)
         let randomGen=setInterval(()=>{
             setText(()=>{
                 let temp='';
@@ -43,7 +43,7 @@ export default function Welcome(props){
             // eslint-disable-next-line
             if(counter==size)
             clearInterval(randomGen);
-        },20)
+        },10)
         // eslint-disable-next-line
     },[])
     return (

@@ -4,11 +4,13 @@ import CustomInput from './custominput';
 import TextContainer from './textContainer';
 import { io } from 'socket.io-client';
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
+import {ArrowLeftOutlined} from "@ant-design/icons"
 export default function PrivateChat(props){
     const [socket1,setSocket]=useState();
     const [messages,setMessages]=useState([]);
     const params=useParams();
+    const navigate=useNavigate();
     let to=params.id;  
     useEffect(()=>{
         console.log(to)
@@ -36,10 +38,18 @@ export default function PrivateChat(props){
     },[])
     return (
         <div 
-        className='
+        className='outlin
           w-[60%] sm:w-[90%] outlin p-3
           flex flex-col justify-center items-center surface
         '>
+          <div className="self-start outline-[.1px] cursor-pointer hover:outline transition-all px-2 py-1 mb-2 text-2xl flex justify-center items-center"
+          onClick={()=>{
+            navigate("/")
+          }}
+          > 
+          <ArrowLeftOutlined />
+          </div>
+
           <TextContainer mess={messages}/>
           <CustomInput from={props.from} to={to} global={false} connec={socket1}/>
         </div>

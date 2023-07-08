@@ -4,9 +4,12 @@ import CustomInput from './custominput';
 import TextContainer from './textContainer';
 import { io } from 'socket.io-client';
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {ArrowLeftOutlined} from '@ant-design/icons'
 export default function Chatbox(props){
     const [socket1,setSocket]=useState();
     const [messages,setMessages]=useState([]);
+    const navigate=useNavigate();
     useEffect(()=>{
           
         let index=0;
@@ -32,6 +35,13 @@ export default function Chatbox(props){
           w-[60%] sm:w-[90%] outlin p-3
           flex flex-col justify-center items-center surface
         '>
+          <div className="self-start outline-[.1px] cursor-pointer hover:outline transition-all px-2 py-1 mb-2 text-2xl flex justify-center items-center"
+          onClick={()=>{
+            navigate("/")
+          }}
+          > 
+          <ArrowLeftOutlined />
+          </div>
           <TextContainer mess={messages}/>
           <CustomInput global={true} connec={socket1}/>
         </div>
