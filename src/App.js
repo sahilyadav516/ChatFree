@@ -6,7 +6,6 @@ import RainEffect from './rainEffect';
 import Login from './login';
 import SignUp from './signup';
 import {Routes, Route} from 'react-router-dom'
-import Room from './Rooms';
 function App() {
   const [showWelcome,setshowWelcome]=useState(false);
   const [showLoginBox,setshowLoginBox]=useState(false);
@@ -38,7 +37,6 @@ function App() {
             <Route path='/' element={!isLogged && showLoginBox && <Login log={setIsLogged} name={setUsername}/> }/>
             <Route path='/signup' element={<SignUp/>}/>
           </Routes>
-          {/* <Room/> */}
       </div>
       </>
   );
