@@ -15,7 +15,7 @@ export default function PrivateChat(props){
     useEffect(()=>{
         console.log(to)
         let index=0;
-        axios.get("http://localhost:80/allPrivateMessage",{params:{
+        axios.get("https://chatfree-server.onrender.com/allPrivateMessage",{params:{
             "user1":props.from,
             "user2":to
         }}).then((res)=>{
@@ -28,7 +28,7 @@ export default function PrivateChat(props){
         }).catch((e)=>{
           console.log(e);
         })
-        let socket=io("http://localhost:80",{query:{"username":props.from}});
+        let socket=io("https://chatfree-server.onrender.com",{query:{"username":props.from}});
         setSocket(socket);
         socket.on("new-private-message",res=>{
           if(res.from===props.from || res.from===to)

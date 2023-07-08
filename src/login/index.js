@@ -11,7 +11,7 @@ export default function Login(props)
 
     let handleSubmit=(e)=>{
         e.preventDefault();
-        axios.post("http://localhost:80/login",{"userName":username,"password":password})
+        axios.post("https://chatfree-server.onrender.com/login",{"userName":username,"password":password})
         .then(res=>{
             // Logged in 
             props.name(username);

@@ -1,5 +1,5 @@
 import RoomItem from "./roomitem"
-import { useState,useEffect } from "react"
+import { useState,useEffect,useRef } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import{ UserAddOutlined,CloseOutlined,PlusOutlined} from '@ant-design/icons'
@@ -9,10 +9,10 @@ export default function Chats(props){
     const [nonempty,setEmpty]=useState(true);
     const [userCheck,setUserCheck]=useState(true);
     const navigate=useNavigate();
+    const formRef=useRef(null);
     useEffect(()=>{
 
-
-        axios.get("http://localhost:80/getChats",{params:{
+        axios.get("https://chatfree-server.onrender.com/getChats",{params:{
             "user1":props.username
         }}).then(res=>{
             let chatData={};
@@ -36,13 +36,13 @@ export default function Chats(props){
     }
     let handleSubmit=e=>{
         e.preventDefault();
-        axios.post("http://localhost/findUser",{
-            "user":e.target[0].value
+        axios.post("https://chatfree-server.onrender.com/findUser",{
+            "user":formRef.current[0].value
         }).then(res=>{
             if(res.data)
             {
                 setUserCheck(true);
-                navigate("/private/"+e.target[0].value);
+                navigate("/private/"+formRef.current[0].value);
             }
             else
             {
@@ -69,7 +69,7 @@ export default function Chats(props){
                     <UserAddOutlined />
                 </div>
             </div>
-            <form className={`mb-1 outline-[.1px] h-0 ${add?'h-16 outline':''} ${userCheck?'':'text-red-500'} transition-all flex `}
+            <form ref={formRef} className={`mb-1 outline-[.1px] h-0 ${add?'h-16 outline':''} ${userCheck?'':'text-red-500'} transition-all flex `}
             onSubmit={handleSubmit}
             >
                 <input placeholder="enter username" required className=" outline-none px-3 w-full bg-inherit"  type="text"

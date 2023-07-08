@@ -16,7 +16,7 @@ export default function SignUp()
             setPassCheck(false);
         }
         else{
-            axios.post("http://localhost:80/signup",{"userName":username,"password":password}).then((res)=>{
+            axios.post("https://chatfree-server.onrender.com/signup",{"userName":username,"password":password}).then((res)=>{
                 console.log(res);
                 setUserCheck(true);
                 //After this redirect to login page.

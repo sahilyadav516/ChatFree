@@ -13,7 +13,7 @@ export default function Chatbox(props){
     useEffect(()=>{
           
         let index=0;
-        axios.get("http://localhost:80/allMessage").then((res)=>{
+        axios.get("https://chatfree-server.onrender.com/allMessage").then((res)=>{
             let data=res.data;
             for(let i=0;i<data.length;i++)
             {
@@ -22,7 +22,7 @@ export default function Chatbox(props){
         }).catch((e)=>{
           console.log(e);
         })
-        let socket=io("http://localhost:80",{query:{"username":props.name}});
+        let socket=io("https://chatfree-server.onrender.com",{query:{"username":props.name}});
         setSocket(socket);
         socket.on("new-message",res=>{
           setMessages(messages=>[...messages,<Chat key={index++} name={res.name} message={res.message}/>]);
