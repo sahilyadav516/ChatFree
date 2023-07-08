@@ -69,10 +69,10 @@ export default function Chats(props){
                     <UserAddOutlined />
                 </div>
             </div>
-            <form ref={formRef} className={`mb-1 outline-[.1px] h-0 ${add?'h-16 outline':''} ${userCheck?'':'text-red-500'} transition-all flex `}
+            <form ref={formRef} className={`mb-1 outline-[.1px] ${add?'h-12 outline':'h-0'} ${userCheck?'':'text-red-500 outline-red-500 '} transition-all flex `}
             onSubmit={handleSubmit}
             >
-                <input placeholder="enter username" required className=" outline-none px-3 w-full bg-inherit"  type="text"
+                <input required className=" text-base outline-none px-3 py-0   w-full bg-inherit"  type="text"
                 onChange={e=>{
                     setUserCheck(true);
                     if(e.target.value.length===0)

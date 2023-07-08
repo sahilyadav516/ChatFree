@@ -12,10 +12,13 @@ body {
   color:rgb(0, 255, 0);
   height: 100vh;
   font-family:'Courier New', Courier, monospace;
-
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 
 }
-
+::-webkit-scrollbar {
+  display: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
