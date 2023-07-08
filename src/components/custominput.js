@@ -2,7 +2,16 @@ export default function CustomInput(props){
     let  handleSubmit=(e)=>{
         e.preventDefault();
         let message=e.target.inputMessage.value
+        if(props.global===true)
         props.connec.emit("message-sent",message);
+        else
+        {
+            props.connec.emit('private-message',{
+                "from":props.from,
+                "to":props.to,
+                "message":message
+            })
+        }
         e.target.inputMessage.value="";
     }
     return (
